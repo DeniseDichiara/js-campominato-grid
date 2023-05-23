@@ -6,3 +6,20 @@ header{
 main{
     background-color: #7fffd4;
 }
+
+div.grid{
+    height: 650px;
+    width: 650px;
+    margin: 0 auto;
+}
+
+div.grid .cell{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    cursor: cell;
+    border: 2px solid black;
+}
+
+div.grid .cell .selected{
+    background-color: blue;
+}
