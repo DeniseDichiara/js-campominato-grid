@@ -23,3 +23,8 @@ div.grid .cell{
 div.selected{
     background-color: blue;
 }
+
+p{
+    display: flex;
+    justify-content: center;
+}
