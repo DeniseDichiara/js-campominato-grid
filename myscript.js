@@ -1,38 +1,37 @@
 
-let tagName
+/**             <div class="cell">
+                    <p>1</p>
+                </div> 
+                
+*/
 
-let className
-
-function createElement(tagName, className){
-    const cellElement = document.createElement (tagName);
-    cellElement.className += className;
-    return cellElement;
-}
-
-function getNewLiElement (){
-    const newLiElement = document.createElement('li');
-    newLiElement.classList.add('list-item');
-    return newLiElement;
-}
-
+const playButton = document.querySelector('div.play-button');
 
 const gridElement = document.getElementById('grid');
 
-const olElement = document.querySelector('ol');
 
-for (let i = 0; i < 100; i ++){
+//*ogni volta che clicco mi svuota la griglia e me la ricrea(così non la duplica)
+playButton.addEventListener(('click'), function () {
 
-    const actualCell = createElement('div', 'cell');
+    //* svuto la griglia prima di aggiungere altri elementi, così quando clicco non  mi duplica la griglia
+    gridElement.innerHTML = "";
 
-    for(let i = 1; i <= 100; i++){
-        olElement.appendChild(getNewLiElement());
+    for(let i = 0; i < 100; i ++){
+
+        const newCell = document.createElement('div');
+        newCell.classList.add('cell');
+        newCell.innerHTML = [i + 1];
+
+        //* A newCell aggiugo un evento: quando clicco stampa in console il proprio contenuto
+        newCell.addEventListener('click', function(){
+            console.log(i + 1);
+            //* inpiù aggiunge una classe (selected) che lo colora di blue quando viene selezionato
+            newCell.classList.toggle('selected');
+        })
+
+        gridElement.appendChild(newCell);
     }
 
-    actualCell.addEventListener('click', function(){
-        
-        actualCell.classList.toggle('selected')
-    })
-
-    gridElement.appendChild(actualCell);
-}
+    
+});
 
